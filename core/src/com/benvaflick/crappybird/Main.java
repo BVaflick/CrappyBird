@@ -4,10 +4,9 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import state.GameStateManager;
-import state.MenuState;
+import com.benvaflick.state.GameStateManager;
+import com.benvaflick.state.MenuState;
 
 public class Main extends ApplicationAdapter {
 
@@ -25,10 +24,10 @@ public class Main extends ApplicationAdapter {
 		stateManager = new GameStateManager();
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		stateManager.push(new MenuState(stateManager));
-		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
-		music.setLooping(true);
-		music.setVolume(0.1f);
-		music.play();
+//		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
+//		music.setLooping(true);
+//		music.setVolume(0.1f);
+//		music.play();
 	}
 
 	@Override
@@ -41,6 +40,6 @@ public class Main extends ApplicationAdapter {
 	@Override
 	public void dispose() {
 		super.dispose();
-		music.dispose();
+//		music.dispose();
 	}
 }

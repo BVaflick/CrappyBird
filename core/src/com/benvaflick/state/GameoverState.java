@@ -1,19 +1,22 @@
-package state;
+package com.benvaflick.state;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.benvaflick.crappybird.Main;
+import com.benvaflick.state.GameState;
+import com.benvaflick.state.GameStateManager;
+import com.benvaflick.state.State;
 
-public class MenuState extends State {
+public class GameoverState extends State {
 
     private Texture background;
-    private Texture playButton;
+    private Texture gameover;
 
-    public MenuState(GameStateManager manager) {
+    public GameoverState(GameStateManager manager) {
         super(manager);
         background = new Texture("bg.png");
-        playButton = new Texture("playbtn.png");
+        gameover = new Texture("gameover.png");
         camera.setToOrtho(false, Main.WIDTH / 2, Main.HEIGHT / 2);
     }
 
@@ -29,7 +32,7 @@ public class MenuState extends State {
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
         spriteBatch.draw(background, 0, 0);
-        spriteBatch.draw(playButton, camera.position.x - (playButton.getWidth() / 2), camera.position.y);
+        spriteBatch.draw(gameover, camera.position.x - (gameover.getWidth() / 2), camera.position.y);
         spriteBatch.end();
     }
 
@@ -41,7 +44,7 @@ public class MenuState extends State {
     @Override
     public void dispose() {
         background.dispose();
-        playButton.dispose();
-        System.out.println("Menu screen disposed");
+        gameover.dispose();
+        System.out.println("Gameover screen disposed");
     }
 }
