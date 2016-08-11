@@ -24,7 +24,7 @@ public class Main extends ApplicationAdapter {
 		stateManager = new GameStateManager();
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		stateManager.push(new MenuState(stateManager));
-//		music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
+//		music = Gdx.audio.newMusic(Gdx.files.internal("sound/music.mp3"));
 //		music.setLooping(true);
 //		music.setVolume(0.1f);
 //		music.play();
