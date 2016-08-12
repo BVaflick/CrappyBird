@@ -12,7 +12,7 @@ public class Ground {
     public static final int GROUND_VERTICAL_OFFSET = -40;
 
     public Ground(float x) {
-        ground = new Texture("ground.png");
+        ground = new Texture("sprites/ground.png");
         groundPos1 = new Vector2(x, GROUND_VERTICAL_OFFSET);
         groundPos2 = new Vector2(x + ground.getWidth(), GROUND_VERTICAL_OFFSET);
         groundBounds1 = new Rectangle(groundPos1.x, groundPos1.y, ground.getWidth(), ground.getHeight());

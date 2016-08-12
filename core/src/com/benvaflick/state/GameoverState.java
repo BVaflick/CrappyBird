@@ -16,7 +16,7 @@ public class GameoverState extends State {
     public GameoverState(GameStateManager manager) {
         super(manager);
         background = new Texture("bg.png");
-        gameover = new Texture("gameover.png");
+        gameover = new Texture("sprites/gameover.png");
         camera.setToOrtho(false, Main.WIDTH / 2, Main.HEIGHT / 2);
     }
 

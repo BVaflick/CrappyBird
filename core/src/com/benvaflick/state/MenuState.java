@@ -13,7 +13,7 @@ public class MenuState extends State {
     public MenuState(GameStateManager manager) {
         super(manager);
         background = new Texture("bg.png");
-        playButton = new Texture("playbtn.png");
+        playButton = new Texture("sprites/playbtn.png");
         camera.setToOrtho(false, Main.WIDTH / 2, Main.HEIGHT / 2);
     }
 

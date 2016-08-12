@@ -26,10 +26,10 @@ public class Bird {
     public Bird(int x, int y) {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(100, 0, 0);
-        texture = new Texture("birdanimation.png");
+        texture = new Texture("sprites/birdanimation.png");
         width = texture.getWidth() / 3;
         height = texture.getHeight();
-        birdAnimation = new Animation(new TextureRegion(texture), 3, 0.5f);
+        birdAnimation = new Animation(new TextureRegion(texture), 3, 0.13f);
         birdBounds = new Rectangle(x, y, texture.getWidth() / 3, texture.getHeight());
         flap = Gdx.audio.newSound(Gdx.files.internal("sound/sfx_wing.ogg"));
         dead = Gdx.audio.newSound(Gdx.files.internal("sound/dead.ogg"));
@@ -38,7 +38,7 @@ public class Bird {
     }
 
     public void update(float delta) {
-        birdAnimation.update(delta);
+        birdAnimation.update(delta, shouldntFlap());
         if (position.y > 0) velocity.add(0, GRAVITY, 0);
         position.add(velocity.x * delta, velocity.y * delta, 0);
         birdBounds.setPosition(position.x, position.y);
@@ -54,6 +54,7 @@ public class Bird {
                 rotation = -90;
             }
         }
+        System.out.println(velocity.y);
     }
 
     public void jump() {
@@ -64,9 +65,11 @@ public class Bird {
     public void die() {
         isAlive = false;
         dead.play();
-        if(position.y > 72) fall.play();
         velocity.x = 0;
         jump();
+        if(position.y > 72) {
+            fall.play();
+        }
     }
 
     public boolean isFalling() {
@@ -80,6 +83,10 @@ public class Bird {
     public void dispose() {
         texture.dispose();
         flap.dispose();
+    }
+
+    public boolean shouldntFlap() {
+        return velocity.y < 50 || !isAlive;
     }
 
     public Vector3 getPosition() {
