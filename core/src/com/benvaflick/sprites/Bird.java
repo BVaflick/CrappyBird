@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
+import java.util.Random;
+
 public class Bird {
 
     private static final int GRAVITY = -15;
@@ -19,9 +21,11 @@ public class Bird {
     private Sound dead;
     private Sound fall;
     private float rotation;
-    private int width;
-    private int height;
+    private int width, height;
+    private int pooCounter, randomJump;
+    private Random random;
     private boolean isAlive;
+    private Poo poo;
 
     public Bird(int x, int y) {
         position = new Vector3(x, y, 0);
@@ -35,6 +39,9 @@ public class Bird {
         dead = Gdx.audio.newSound(Gdx.files.internal("sound/dead.ogg"));
         fall = Gdx.audio.newSound(Gdx.files.internal("sound/fall.ogg"));
         isAlive = true;
+        poo = new Poo(0,0);
+        random = new Random();
+        randomJump = random.nextInt(7) + 3;
     }
 
     public void update(float delta) {
@@ -54,12 +61,18 @@ public class Bird {
                 rotation = -90;
             }
         }
-        System.out.println(velocity.y);
+        poo.update(delta);
     }
 
     public void jump() {
         velocity.y = 250;
         flap.play();
+        pooCounter++;
+        if (pooCounter == randomJump) {
+            poo = new Poo(position.x, position.y);
+            randomJump = random.nextInt(7) + 3;
+            pooCounter = 0;
+        }
     }
 
     public void die() {
@@ -67,7 +80,7 @@ public class Bird {
         dead.play();
         velocity.x = 0;
         jump();
-        if(position.y > 72) {
+        if (position.y > 72) {
             fall.play();
         }
     }
@@ -83,6 +96,7 @@ public class Bird {
     public void dispose() {
         texture.dispose();
         flap.dispose();
+        poo.dispose();
     }
 
     public boolean shouldntFlap() {
@@ -115,5 +129,9 @@ public class Bird {
 
     public boolean isAlive() {
         return isAlive;
+    }
+
+    public Poo getPoo() {
+        return poo;
     }
 }

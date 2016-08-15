@@ -1,10 +1,8 @@
 package com.benvaflick.state;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.benvaflick.crappybird.Main;
 import com.benvaflick.sprites.Bird;
@@ -52,6 +50,7 @@ public class GameState extends State {
             spriteBatch.draw(tube.getBottomTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
         }
         spriteBatch.draw(bird.getBird(), bird.getPosition().x, bird.getPosition().y, bird.getWidth() / 2.0f, bird.getHeight() / 2.0f, bird.getWidth(), bird.getHeight(), 1, 1, bird.getRotation());
+        spriteBatch.draw(bird.getPoo().getTexture(), bird.getPoo().getPosition().x, bird.getPoo().getPosition().y);
         spriteBatch.draw(ground.getTexture(), ground.getGroundPos1().x, ground.getGroundPos1().y);
         spriteBatch.draw(ground.getTexture(), ground.getGroundPos2().x, ground.getGroundPos2().y);
         spriteBatch.end();
