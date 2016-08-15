@@ -16,8 +16,8 @@ public class Poo {
     public Poo(float x, float y) {
         position = new Vector2(x, y);
         velocity = new Vector2(60, 0);
-        drop = new Texture("sprites/poo.png");
-        puddle = new Texture("sprites/puddle.png");
+        drop = new Texture("sprites/poo2.png");
+        puddle = new Texture("sprites/puddle2.png");
         currentTexture = drop;
     }
 
