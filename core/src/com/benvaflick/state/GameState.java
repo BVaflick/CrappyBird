@@ -1,7 +1,10 @@
 package com.benvaflick.state;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.benvaflick.crappybird.Main;
@@ -17,7 +20,6 @@ public class GameState extends State {
     private Ground ground;
     private Array<Tube> tubes;
     private Texture background;
-
 
     public GameState(GameStateManager manager) {
         super(manager);
@@ -41,7 +43,8 @@ public class GameState extends State {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-
+        Gdx.gl.glClearColor(0.66f, 0.9f, 0.9f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
         spriteBatch.draw(background, camera.position.x - camera.viewportWidth / 2, 0);

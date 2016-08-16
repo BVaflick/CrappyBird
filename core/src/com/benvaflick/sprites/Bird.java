@@ -49,6 +49,10 @@ public class Bird {
         if (position.y > 0) velocity.add(0, GRAVITY, 0);
         position.add(velocity.x * delta, velocity.y * delta, 0);
         birdBounds.setPosition(position.x, position.y);
+        if (position.y > 400) {
+            position.y = 400;
+            velocity.y = 0;
+        }
         if (isFlyingUp()) {
             rotation += 600 * delta;
             if (rotation > 20) {
